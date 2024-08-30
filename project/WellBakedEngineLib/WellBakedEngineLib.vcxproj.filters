@@ -4,10 +4,12 @@
     <ClInclude Include="include\engine.h" />
     <ClInclude Include="include\graphics.h" />
     <ClInclude Include="include\input.h" />
+    <ClInclude Include="include\logger.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\input.cpp" />
     <ClCompile Include="src\graphics.cpp" />
     <ClCompile Include="src\engine.cpp" />
+    <ClCompile Include="src\logger.cpp" />
   </ItemGroup>
 </Project>
