@@ -5,11 +5,22 @@
     <ClInclude Include="include\graphics.h" />
     <ClInclude Include="include\input.h" />
     <ClInclude Include="include\logger.h" />
+    <ClInclude Include="include\configuration\iniconfiguration.h">
+      <Filter>configuration</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\input.cpp" />
     <ClCompile Include="src\graphics.cpp" />
     <ClCompile Include="src\engine.cpp" />
     <ClCompile Include="src\logger.cpp" />
+    <ClCompile Include="src\configuration\iniconfiguration.cpp">
+      <Filter>configuration</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="configuration">
+      <UniqueIdentifier>{b0ecff99-6fca-42bb-9bb6-b2e269460f31}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

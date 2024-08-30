@@ -19,12 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\configuration\iniconfiguration.h" />
     <ClInclude Include="include\engine.h" />
     <ClInclude Include="include\graphics.h" />
     <ClInclude Include="include\input.h" />
     <ClInclude Include="include\logger.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\configuration\iniconfiguration.cpp" />
     <ClCompile Include="src\engine.cpp" />
     <ClCompile Include="src\graphics.cpp" />
     <ClCompile Include="src\input.cpp" />

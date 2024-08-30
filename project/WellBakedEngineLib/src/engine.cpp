@@ -1,8 +1,10 @@
 #include "engine.h"
 
+#include <sstream>
 #include <Windows.h>
 
 #include "logger.h"
+#include "configuration/iniconfiguration.h"
 
 namespace WBEngine
 {
@@ -30,6 +32,17 @@ namespace WBEngine
 	bool Engine::Initialize()
 	{
 		Logger::Info(L"Engine initialization started");
+
+		// Configuration
+		IniConfiguration config;
+		int nWidth = config.GetWidth();
+		int nHeight = config.GetHeight();
+
+		std::wstringstream sLogMessage;
+		sLogMessage << L"Engine Configuration:" << std::endl;
+		sLogMessage << L"\tWidth: " << nWidth << std::endl;
+		sLogMessage << L"\tHeight: " << nHeight;
+		Logger::Info(sLogMessage.str());
 
 		if (!m_pGraphics->Initialize())
 		{

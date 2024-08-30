@@ -3,4 +3,14 @@
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Filter Include="configuration">
+      <UniqueIdentifier>{43c7eebd-340f-445a-abc3-948f77ac530e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="config.ini">
+      <Filter>configuration</Filter>
+    </None>
+  </ItemGroup>
 </Project>

@@ -26,6 +26,9 @@
       <Project>{ec6d9ca4-62a6-47b0-9b95-9e94f2060093}</Project>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="config.ini" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
