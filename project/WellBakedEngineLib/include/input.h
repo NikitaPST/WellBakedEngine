@@ -8,6 +8,16 @@ namespace WBEngine
 	public:
 		Input();
 		~Input();
+
+		void UpdateFrame();
+		void KeyDown(unsigned int uKey);
+		void KeyUp(unsigned int uKey);
+
+		bool IsKeyUp(unsigned int uKey);
+
+	private:
+		bool m_arrKeys[256];
+		bool m_arrOldKeys[256];
 	};
 }
 

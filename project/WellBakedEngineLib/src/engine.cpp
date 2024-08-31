@@ -144,6 +144,12 @@ namespace WBEngine
 				}
 				PostQuitMessage(0);
 				return 0;
+			case WM_KEYDOWN:
+				m_pInput->KeyDown((UINT)wParam);
+				return 0;
+			case WM_KEYUP:
+				m_pInput->KeyUp((UINT)wParam);
+				return 0;
 			case WM_PAINT:
 			{
 				PAINTSTRUCT ps;
@@ -227,6 +233,14 @@ namespace WBEngine
 
 	bool Engine::FrameProcessing()
 	{
+		if (m_pInput->IsKeyUp(VK_ESCAPE))
+		{
+			Logger::Info(L"User pressed ESC");
+			PostMessage(m_hWnd, WM_CLOSE, 0, 0);
+		}
+
+		m_pInput->UpdateFrame();
+
 		return true;
 	}
 
