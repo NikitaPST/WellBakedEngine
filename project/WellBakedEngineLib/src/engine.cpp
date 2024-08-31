@@ -5,10 +5,13 @@
 #include "logger.h"
 #include "configuration/iniconfiguration.h"
 
+#pragma comment(lib, "Msimg32.lib")
+
 namespace WBEngine
 {
 	Engine::Engine()
 	{
+		m_hBackgroundBrush = NULL;
 		m_hInstance = NULL;
 		m_hWnd = NULL;
 
@@ -82,6 +85,12 @@ namespace WBEngine
 		}
 		UnregisterClass(L"Well-Baked Engine", m_hInstance);
 
+		if (m_hBackgroundBrush)
+		{
+			DeleteObject(m_hBackgroundBrush);
+			m_hBackgroundBrush = NULL;
+		}
+
 		Logger::Info(L"Engine shutdown finished");
 	}
 
@@ -118,14 +127,38 @@ namespace WBEngine
 
 	LRESULT CALLBACK Engine::MessageHandler(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	{
+		static HBITMAP hLogo = NULL;
+
 		switch (uMsg)
 		{
 			case WM_CLOSE:
 				DestroyWindow(hWnd);
 				return 0;
+			case WM_CREATE:
+				hLogo = (HBITMAP)LoadImage(NULL, L"..\\..\\assets\\icons\\Engine256.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+				return 0;
 			case WM_DESTROY:
+				if (hLogo)
+				{
+					DeleteObject(hLogo);
+				}
 				PostQuitMessage(0);
 				return 0;
+			case WM_PAINT:
+			{
+				PAINTSTRUCT ps;
+				HDC hdc = BeginPaint(hWnd, &ps);
+
+				SetTextColor(hdc, RGB(255, 77, 0));
+				SetBkMode(hdc, TRANSPARENT);
+
+				RECT rect;
+				GetClientRect(hWnd, &rect);
+				DrawLogo(hWnd, hdc, hLogo, rect);
+
+				EndPaint(hWnd, &ps);
+				return 0;
+			}
 			default:
 				return DefWindowProc(hWnd, uMsg, wParam, lParam);
 		}
@@ -137,6 +170,8 @@ namespace WBEngine
 
 		m_hInstance = GetModuleHandle(NULL);
 
+		m_hBackgroundBrush = CreateSolidBrush(RGB(30, 30, 30));
+
 		WNDCLASSEX wc;
 		ZeroMemory(&wc, sizeof(WNDCLASSEX));
 
@@ -145,10 +180,10 @@ namespace WBEngine
 		wc.cbClsExtra = 0;
 		wc.cbWndExtra = 0;
 		wc.hInstance = m_hInstance;
-		wc.hIcon = LoadIcon(NULL, IDI_WINLOGO);
-		wc.hIcon = wc.hIcon;
+		wc.hIcon = (HICON)LoadImage(NULL, L"..\\..\\assets\\icons\\Engine32.ico", IMAGE_ICON, 32, 32, LR_LOADFROMFILE | LR_DEFAULTSIZE);
+		wc.hIconSm = (HICON)LoadImage(NULL, L"..\\..\\assets\\icons\\Engine16.ico", IMAGE_ICON, 16, 16, LR_LOADFROMFILE | LR_DEFAULTSIZE);
 		wc.hCursor = LoadCursor(NULL, IDC_ARROW);
-		wc.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);
+		wc.hbrBackground = m_hBackgroundBrush;
 		wc.lpszMenuName = NULL;
 		wc.lpszClassName = L"Well-Baked Engine";
 		wc.cbSize = sizeof(WNDCLASSEX);
@@ -198,5 +233,26 @@ namespace WBEngine
 	LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	{
 		return g_pEngineInstance->MessageHandler(hWnd, uMsg, wParam, lParam);
+	}
+
+	void Engine::DrawLogo(HWND hWnd, HDC hdc, HBITMAP hLogo, RECT rc)
+	{
+		if (hLogo == NULL)
+			return;
+
+		HDC hdcMem = CreateCompatibleDC(hdc);
+		HBITMAP hOldBitmap = (HBITMAP)SelectObject(hdcMem, hLogo);
+
+		BITMAP bm;
+		GetObject(hLogo, sizeof(BITMAP), &bm);
+
+		int nImgX = (rc.right - bm.bmWidth) / 2;
+		int nImgY = (rc.bottom - bm.bmHeight) / 2;
+
+		TransparentBlt(hdc, nImgX, nImgY, bm.bmWidth, bm.bmHeight, hdcMem, 0, 0,
+			bm.bmWidth, bm.bmHeight, RGB(255, 255, 255));
+
+		SelectObject(hdcMem, hOldBitmap);
+		DeleteDC(hdcMem);
 	}
 }

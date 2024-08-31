@@ -24,11 +24,13 @@ namespace WBEngine
 		Graphics* m_pGraphics;
 		Input* m_pInput;
 
+		HBRUSH m_hBackgroundBrush;
 		HINSTANCE m_hInstance;
 		HWND m_hWnd;
 
 		bool InitializeWindow(int& nWidth, int& nHeight);
 		bool FrameProcessing();
+		void DrawLogo(HWND hWnd, HDC hdc, HBITMAP hLogo, RECT rc);
 	};
 
 	// Global functions
