@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\configuration\iniconfiguration.h" />
+    <ClInclude Include="include\dx\direct3d.h" />
     <ClInclude Include="include\engine.h" />
     <ClInclude Include="include\graphics.h" />
     <ClInclude Include="include\input.h" />
@@ -27,6 +28,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\configuration\iniconfiguration.cpp" />
+    <ClCompile Include="src\dx\direct3d.cpp" />
     <ClCompile Include="src\engine.cpp" />
     <ClCompile Include="src\graphics.cpp" />
     <ClCompile Include="src\input.cpp" />
@@ -127,7 +129,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>C:\Programming\WellBakedEngine\project\WellBakedEngineLib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>

@@ -59,7 +59,7 @@ namespace WBEngine
 			return false;
 		}
 
-		if (!m_pGraphics->Initialize())
+		if (!m_pGraphics->Initialize(nWidth, nHeight, m_hWnd))
 		{
 			Logger::Error(L"Graphics initialization failed");
 			return false;

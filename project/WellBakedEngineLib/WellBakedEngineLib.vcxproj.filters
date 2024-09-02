@@ -8,6 +8,9 @@
     <ClInclude Include="include\configuration\iniconfiguration.h">
       <Filter>configuration</Filter>
     </ClInclude>
+    <ClInclude Include="include\dx\direct3d.h">
+      <Filter>dx</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\input.cpp" />
@@ -17,10 +20,16 @@
     <ClCompile Include="src\configuration\iniconfiguration.cpp">
       <Filter>configuration</Filter>
     </ClCompile>
+    <ClCompile Include="src\dx\direct3d.cpp">
+      <Filter>dx</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="configuration">
       <UniqueIdentifier>{b0ecff99-6fca-42bb-9bb6-b2e269460f31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dx">
+      <UniqueIdentifier>{1aca4e1e-e876-40c8-958a-71aeec77e1d8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
