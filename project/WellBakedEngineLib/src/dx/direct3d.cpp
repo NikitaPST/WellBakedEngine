@@ -20,6 +20,7 @@ namespace WBEngine
 
 		ZeroMemory(&m_viewport, sizeof(D3D11_VIEWPORT));
 		m_mProjectionMatrix = DirectX::XMMatrixIdentity();
+		m_clrBackgroundColor = DirectX::XMFLOAT4(0.5f, 0.5f, 0.5f, 1.0f);
 	}
 
 	Direct3D::~Direct3D()
@@ -300,5 +301,16 @@ namespace WBEngine
 		}
 
 		Logger::Info(L"Direct3D shutdown finished");
+	}
+
+	void Direct3D::BeginScene()
+	{
+		m_pDeviceContext->ClearRenderTargetView(m_pRenderTargetView, reinterpret_cast<const FLOAT*>(&m_clrBackgroundColor));
+		m_pDeviceContext->ClearDepthStencilView(m_pDepthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);
+	}
+
+	void Direct3D::EndScene()
+	{
+		m_pSwapChain->Present(0, 0);
 	}
 }

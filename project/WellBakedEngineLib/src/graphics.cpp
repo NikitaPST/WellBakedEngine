@@ -43,4 +43,12 @@ namespace WBEngine
 
 		Logger::Info(L"Graphics shutdown finished");
 	}
+
+	bool Graphics::RenderFrame()
+	{
+		m_pDirect3D->BeginScene();
+
+		m_pDirect3D->EndScene();
+		return true;
+	}
 }

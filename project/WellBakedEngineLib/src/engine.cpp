@@ -239,6 +239,12 @@ namespace WBEngine
 			PostMessage(m_hWnd, WM_CLOSE, 0, 0);
 		}
 
+		if (!m_pGraphics->RenderFrame())
+		{
+			Logger::Error(L"Frame rendering failed");
+			return false;
+		}
+
 		m_pInput->UpdateFrame();
 
 		return true;

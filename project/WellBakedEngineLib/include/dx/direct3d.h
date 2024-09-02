@@ -15,6 +15,9 @@ namespace WBEngine
 		bool Initialize(INT nScreenWidth, INT nScreenHeight, HWND hWnd);
 		void Shutdown();
 
+		void BeginScene();
+		void EndScene();
+
 	private:
 		IDXGISwapChain* m_pSwapChain;
 		ID3D11Device* m_pDevice;
@@ -27,6 +30,7 @@ namespace WBEngine
 
 		D3D11_VIEWPORT m_viewport;
 		DirectX::XMMATRIX m_mProjectionMatrix;
+		DirectX::XMFLOAT4 m_clrBackgroundColor;
 	};
 
 	const float SCREEN_NEAR = 0.3f;

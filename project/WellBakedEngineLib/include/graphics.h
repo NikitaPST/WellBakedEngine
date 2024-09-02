@@ -13,6 +13,7 @@ namespace WBEngine
 
 		bool Initialize(INT nScreenWidth, INT nScreenHeight, HWND hWnd);
 		void Shutdown();
+		bool RenderFrame();
 
 	private:
 		Direct3D* m_pDirect3D;
