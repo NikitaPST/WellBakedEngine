@@ -12,6 +12,10 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine
 	{
 		pEngine->Run();
 	}
+	else
+	{
+		MessageBox(NULL, L"Well-Baked Engine initialization failed", L"Well-Baked Engine", MB_ICONERROR | MB_OK);
+	}
 
 	pEngine->Shutdown();
 	delete pEngine; pEngine = NULL;

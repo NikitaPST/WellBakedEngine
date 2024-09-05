@@ -18,6 +18,8 @@ namespace WBEngine
 		void BeginScene();
 		void EndScene();
 
+		ID3D11Device* GetDevice();
+
 	private:
 		IDXGISwapChain* m_pSwapChain;
 		ID3D11Device* m_pDevice;

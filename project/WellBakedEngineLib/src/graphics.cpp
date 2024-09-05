@@ -7,10 +7,17 @@ namespace WBEngine
 	Graphics::Graphics()
 	{
 		m_pDirect3D = new Direct3D();
+		m_pColorShader = new ColorShader();
 	}
 
 	Graphics::~Graphics()
 	{
+		if (m_pColorShader)
+		{
+			delete m_pColorShader;
+			m_pColorShader = nullptr;
+		}
+
 		if (m_pDirect3D)
 		{
 			delete m_pDirect3D;
@@ -28,6 +35,12 @@ namespace WBEngine
 			return false;
 		}
 
+		if (!m_pColorShader->Initialize(m_pDirect3D->GetDevice()))
+		{
+			Logger::Error(L"Color shader initialization failed");
+			return false;
+		}
+
 		Logger::Info(L"Graphics initialization finished");
 		return true;
 	}
@@ -35,6 +48,11 @@ namespace WBEngine
 	void Graphics::Shutdown()
 	{
 		Logger::Info(L"Graphics shutdown started");
+
+		if (m_pColorShader)
+		{
+			m_pColorShader->Dispose();
+		}
 
 		if (m_pDirect3D)
 		{

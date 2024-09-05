@@ -1,6 +1,7 @@
 #ifndef _GRAPHICS_H
 #define _GRAPHICS_H
 
+#include "dx/color_shader.h"
 #include "dx/direct3d.h"
 
 namespace WBEngine
@@ -17,6 +18,7 @@ namespace WBEngine
 
 	private:
 		Direct3D* m_pDirect3D;
+		ColorShader* m_pColorShader;
 	};
 }
 

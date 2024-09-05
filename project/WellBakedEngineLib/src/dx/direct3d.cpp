@@ -313,4 +313,9 @@ namespace WBEngine
 	{
 		m_pSwapChain->Present(0, 0);
 	}
+
+	ID3D11Device* Direct3D::GetDevice()
+	{
+		return m_pDevice;
+	}
 }

@@ -11,6 +11,9 @@
     <ClInclude Include="include\dx\direct3d.h">
       <Filter>dx</Filter>
     </ClInclude>
+    <ClInclude Include="include\dx\color_shader.h">
+      <Filter>dx</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\input.cpp" />
@@ -23,6 +26,9 @@
     <ClCompile Include="src\dx\direct3d.cpp">
       <Filter>dx</Filter>
     </ClCompile>
+    <ClCompile Include="src\dx\color_shader.cpp">
+      <Filter>dx</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="configuration">
@@ -31,5 +37,16 @@
     <Filter Include="dx">
       <UniqueIdentifier>{1aca4e1e-e876-40c8-958a-71aeec77e1d8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="hlsl">
+      <UniqueIdentifier>{ec83d913-1ccb-403b-9927-68d076d336af}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="hlsl\color.vs">
+      <Filter>hlsl</Filter>
+    </None>
+    <None Include="hlsl\color.ps">
+      <Filter>hlsl</Filter>
+    </None>
   </ItemGroup>
 </Project>
