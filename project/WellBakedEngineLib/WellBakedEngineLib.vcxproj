@@ -24,6 +24,7 @@
     <ClInclude Include="include\dx\direct3d.h" />
     <ClInclude Include="include\engine.h" />
     <ClInclude Include="include\graphics.h" />
+    <ClInclude Include="include\graphics\camera.h" />
     <ClInclude Include="include\input.h" />
     <ClInclude Include="include\logger.h" />
   </ItemGroup>
@@ -33,6 +34,7 @@
     <ClCompile Include="src\dx\direct3d.cpp" />
     <ClCompile Include="src\engine.cpp" />
     <ClCompile Include="src\graphics.cpp" />
+    <ClCompile Include="src\graphics\camera.cpp" />
     <ClCompile Include="src\input.cpp" />
     <ClCompile Include="src\logger.cpp" />
   </ItemGroup>
