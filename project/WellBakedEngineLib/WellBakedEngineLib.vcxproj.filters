@@ -17,6 +17,9 @@
     <ClInclude Include="include\graphics\camera.h">
       <Filter>graphics</Filter>
     </ClInclude>
+    <ClInclude Include="include\graphics\model.h">
+      <Filter>graphics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\input.cpp" />
@@ -33,6 +36,9 @@
       <Filter>dx</Filter>
     </ClCompile>
     <ClCompile Include="src\graphics\camera.cpp">
+      <Filter>graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\model.cpp">
       <Filter>graphics</Filter>
     </ClCompile>
   </ItemGroup>

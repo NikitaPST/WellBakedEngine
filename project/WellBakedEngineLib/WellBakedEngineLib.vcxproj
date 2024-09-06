@@ -25,6 +25,7 @@
     <ClInclude Include="include\engine.h" />
     <ClInclude Include="include\graphics.h" />
     <ClInclude Include="include\graphics\camera.h" />
+    <ClInclude Include="include\graphics\model.h" />
     <ClInclude Include="include\input.h" />
     <ClInclude Include="include\logger.h" />
   </ItemGroup>
@@ -35,6 +36,7 @@
     <ClCompile Include="src\engine.cpp" />
     <ClCompile Include="src\graphics.cpp" />
     <ClCompile Include="src\graphics\camera.cpp" />
+    <ClCompile Include="src\graphics\model.cpp" />
     <ClCompile Include="src\input.cpp" />
     <ClCompile Include="src\logger.cpp" />
   </ItemGroup>

@@ -244,6 +244,8 @@ namespace WBEngine
 		float fScreenAspect = (float)nScreenWidth / (float)nScreenHeight;
 		m_mProjectionMatrix = DirectX::XMMatrixPerspectiveFovLH(fFieldOfView, fScreenAspect, SCREEN_NEAR, SCREEN_DEPTH);
 
+		m_pDeviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
 		Logger::Info(L"Direct3D initialization finished");
 		return true;
 	}
