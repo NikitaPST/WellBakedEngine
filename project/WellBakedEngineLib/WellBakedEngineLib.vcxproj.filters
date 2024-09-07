@@ -20,6 +20,9 @@
     <ClInclude Include="include\graphics\model.h">
       <Filter>graphics</Filter>
     </ClInclude>
+    <ClInclude Include="include\graphics\model_collection.h">
+      <Filter>graphics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\input.cpp" />
@@ -39,6 +42,9 @@
       <Filter>graphics</Filter>
     </ClCompile>
     <ClCompile Include="src\graphics\model.cpp">
+      <Filter>graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\model_collection.cpp">
       <Filter>graphics</Filter>
     </ClCompile>
   </ItemGroup>

@@ -125,6 +125,11 @@ namespace WBEngine
 		}
 	}
 
+	Graphics* Engine::GetGraphics()
+	{
+		return m_pGraphics;
+	}
+
 	LRESULT CALLBACK Engine::MessageHandler(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	{
 		static HBITMAP hLogo = NULL;

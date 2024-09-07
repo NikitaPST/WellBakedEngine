@@ -3,12 +3,14 @@
 #include "engine.h"
 #include "logger.h"
 
+bool LoadScene(WBEngine::Engine* pEngine);
+
 int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine, int nCmdShow)
 {
 	WBEngine::Logger::SetFilePath(L"logfile.log");
 	WBEngine::Engine* pEngine = new WBEngine::Engine();
 
-	if (pEngine->Initialize())
+	if (pEngine->Initialize() && LoadScene(pEngine))
 	{
 		pEngine->Run();
 	}
@@ -21,4 +23,12 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine
 	delete pEngine; pEngine = NULL;
 
 	return 0;
+}
+
+bool LoadScene(WBEngine::Engine* pEngine)
+{
+	if (!pEngine->GetGraphics()->CreateTestModel())
+		return false;
+
+	return true;
 }

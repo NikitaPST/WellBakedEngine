@@ -9,10 +9,17 @@ namespace WBEngine
 		m_pDirect3D = new Direct3D();
 		m_pColorShader = new ColorShader();
 		m_pCamera = new Camera();
+		m_pModelCollection = new ModelCollection();
 	}
 
 	Graphics::~Graphics()
 	{
+		if (m_pModelCollection)
+		{
+			delete m_pModelCollection;
+			m_pModelCollection = nullptr;
+		}
+
 		if (m_pCamera)
 		{
 			delete m_pCamera;
@@ -58,6 +65,11 @@ namespace WBEngine
 	{
 		Logger::Info(L"Graphics shutdown started");
 
+		if (m_pModelCollection)
+		{
+			m_pModelCollection->Dispose();
+		}
+
 		if (m_pColorShader)
 		{
 			m_pColorShader->Dispose();
@@ -79,5 +91,10 @@ namespace WBEngine
 
 		m_pDirect3D->EndScene();
 		return true;
+	}
+
+	bool Graphics::CreateTestModel()
+	{
+		return m_pModelCollection->CreateTestModel(m_pDirect3D->GetDevice());
 	}
 }

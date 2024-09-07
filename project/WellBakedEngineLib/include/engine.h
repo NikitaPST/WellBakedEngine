@@ -18,6 +18,8 @@ namespace WBEngine
 		void Shutdown();
 		void Run();
 
+		Graphics* GetGraphics();
+
 		LRESULT CALLBACK MessageHandler(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
 	private:

@@ -4,6 +4,7 @@
 #include "dx/color_shader.h"
 #include "dx/direct3d.h"
 #include "graphics/camera.h"
+#include "graphics/model_collection.h"
 
 namespace WBEngine
 {
@@ -17,10 +18,13 @@ namespace WBEngine
 		void Shutdown();
 		bool RenderFrame();
 
+		bool CreateTestModel();
+
 	private:
 		Direct3D* m_pDirect3D;
 		ColorShader* m_pColorShader;
 		Camera* m_pCamera;
+		ModelCollection* m_pModelCollection;
 	};
 }
 
