@@ -58,4 +58,15 @@ namespace WBEngine
 		Logger::Info(L"Test model created");
 		return true;
 	}
+
+	Model* ModelCollection::GetModel(std::wstring sModelName)
+	{
+		auto it = m_dictModels.find(sModelName);
+		if (it != m_dictModels.end())
+		{
+			return it->second;
+		}
+
+		return nullptr;
+	}
 }

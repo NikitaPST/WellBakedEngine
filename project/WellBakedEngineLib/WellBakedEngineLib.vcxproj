@@ -25,6 +25,8 @@
     <ClInclude Include="include\engine.h" />
     <ClInclude Include="include\graphics.h" />
     <ClInclude Include="include\graphics\camera.h" />
+    <ClInclude Include="include\graphics\game_object.h" />
+    <ClInclude Include="include\graphics\game_object_collection.h" />
     <ClInclude Include="include\graphics\model.h" />
     <ClInclude Include="include\graphics\model_collection.h" />
     <ClInclude Include="include\input.h" />
@@ -37,6 +39,8 @@
     <ClCompile Include="src\engine.cpp" />
     <ClCompile Include="src\graphics.cpp" />
     <ClCompile Include="src\graphics\camera.cpp" />
+    <ClCompile Include="src\graphics\game_object.cpp" />
+    <ClCompile Include="src\graphics\game_object_collection.cpp" />
     <ClCompile Include="src\graphics\model.cpp" />
     <ClCompile Include="src\graphics\model_collection.cpp" />
     <ClCompile Include="src\input.cpp" />

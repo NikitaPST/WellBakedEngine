@@ -10,10 +10,17 @@ namespace WBEngine
 		m_pColorShader = new ColorShader();
 		m_pCamera = new Camera();
 		m_pModelCollection = new ModelCollection();
+		m_pGameObjectCollection = new GameObjectCollection(m_pModelCollection);
 	}
 
 	Graphics::~Graphics()
 	{
+		if (m_pGameObjectCollection)
+		{
+			delete m_pGameObjectCollection;
+			m_pGameObjectCollection = nullptr;
+		}
+
 		if (m_pModelCollection)
 		{
 			delete m_pModelCollection;
@@ -65,6 +72,11 @@ namespace WBEngine
 	{
 		Logger::Info(L"Graphics shutdown started");
 
+		if (m_pGameObjectCollection)
+		{
+			m_pGameObjectCollection->Dispose();
+		}
+
 		if (m_pModelCollection)
 		{
 			m_pModelCollection->Dispose();
@@ -96,5 +108,10 @@ namespace WBEngine
 	bool Graphics::CreateTestModel()
 	{
 		return m_pModelCollection->CreateTestModel(m_pDirect3D->GetDevice());
+	}
+
+	GameObject* Graphics::CreateGameObject(std::wstring sObjectName, std::wstring sModelName)
+	{
+		return m_pGameObjectCollection->CreateObject(sObjectName, sModelName);
 	}
 }

@@ -30,5 +30,8 @@ bool LoadScene(WBEngine::Engine* pEngine)
 	if (!pEngine->GetGraphics()->CreateTestModel())
 		return false;
 
+	if (!pEngine->GetGraphics()->CreateGameObject(L"Test object", WBEngine::TEST_MODEL_NAME))
+		return false;
+
 	return true;
 }

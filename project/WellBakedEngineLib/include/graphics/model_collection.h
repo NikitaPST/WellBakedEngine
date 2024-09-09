@@ -18,6 +18,8 @@ namespace WBEngine
 		void Dispose();
 		bool CreateTestModel(ID3D11Device* pDevice);
 
+		Model* GetModel(std::wstring sModelName);
+
 	private:
 		std::map<std::wstring, Model*> m_dictModels;
 	};
