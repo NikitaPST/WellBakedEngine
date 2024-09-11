@@ -24,6 +24,9 @@ namespace WBEngine
 		bool CreateTestModel();
 		GameObject* CreateGameObject(std::wstring sObjectName, std::wstring sModelName);
 
+		Direct3D* GetDirect3D();
+		ColorShader* GetColorShader();
+
 	private:
 		Direct3D* m_pDirect3D;
 		ColorShader* m_pColorShader;

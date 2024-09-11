@@ -14,6 +14,8 @@ namespace WBEngine
 
 		bool Initialize(ID3D11Device* pDevice);
 		void Dispose();
+		bool Render(ID3D11DeviceContext* pDeviceContext, UINT nIndexCount, DirectX::XMMATRIX mWorld,
+			DirectX::XMMATRIX mView, DirectX::XMMATRIX mProjection);
 
 	private:
 		ID3D11VertexShader* m_pVertexShader;

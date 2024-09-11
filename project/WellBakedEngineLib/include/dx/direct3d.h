@@ -19,6 +19,8 @@ namespace WBEngine
 		void EndScene();
 
 		ID3D11Device* GetDevice();
+		ID3D11DeviceContext* GetDeviceContext();
+		DirectX::XMMATRIX GetProjectionMatrix();
 
 	private:
 		IDXGISwapChain* m_pSwapChain;
@@ -31,7 +33,7 @@ namespace WBEngine
 		ID3D11RasterizerState* m_pRasterState;
 
 		D3D11_VIEWPORT m_viewport;
-		DirectX::XMMATRIX m_mProjectionMatrix;
+		DirectX::XMMATRIX m_mProjection;
 		DirectX::XMFLOAT4 m_clrBackgroundColor;
 	};
 

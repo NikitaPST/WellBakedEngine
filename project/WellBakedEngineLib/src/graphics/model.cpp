@@ -157,4 +157,9 @@ namespace WBEngine
 		pDeviceContext->IASetVertexBuffers(0, 1, &m_pVertexBuffer, &uStride, &uOffset);
 		pDeviceContext->IASetIndexBuffer(m_pIndexBuffer, DXGI_FORMAT_R32_UINT, 0);
 	}
+
+	unsigned int Model::GetIndexCount()
+	{
+		return m_nIndexCount;
+	}
 }

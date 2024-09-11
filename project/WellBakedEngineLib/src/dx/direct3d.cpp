@@ -19,7 +19,7 @@ namespace WBEngine
 		m_pRasterState = NULL;
 
 		ZeroMemory(&m_viewport, sizeof(D3D11_VIEWPORT));
-		m_mProjectionMatrix = DirectX::XMMatrixIdentity();
+		m_mProjection = DirectX::XMMatrixIdentity();
 		m_clrBackgroundColor = DirectX::XMFLOAT4(0.5f, 0.5f, 0.5f, 1.0f);
 	}
 
@@ -242,7 +242,7 @@ namespace WBEngine
 
 		float fFieldOfView = DirectX::XM_PIDIV4;
 		float fScreenAspect = (float)nScreenWidth / (float)nScreenHeight;
-		m_mProjectionMatrix = DirectX::XMMatrixPerspectiveFovLH(fFieldOfView, fScreenAspect, SCREEN_NEAR, SCREEN_DEPTH);
+		m_mProjection = DirectX::XMMatrixPerspectiveFovLH(fFieldOfView, fScreenAspect, SCREEN_NEAR, SCREEN_DEPTH);
 
 		m_pDeviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
@@ -319,5 +319,15 @@ namespace WBEngine
 	ID3D11Device* Direct3D::GetDevice()
 	{
 		return m_pDevice;
+	}
+
+	ID3D11DeviceContext* Direct3D::GetDeviceContext()
+	{
+		return m_pDeviceContext;
+	}
+
+	DirectX::XMMATRIX Direct3D::GetProjectionMatrix()
+	{
+		return m_mProjection;
 	}
 }

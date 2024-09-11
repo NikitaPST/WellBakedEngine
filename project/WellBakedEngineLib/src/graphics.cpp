@@ -101,6 +101,14 @@ namespace WBEngine
 
 		m_pCamera->Render();
 
+		DirectX::XMMATRIX mProjection = m_pDirect3D->GetProjectionMatrix();
+		DirectX::XMMATRIX mView = m_pCamera->GetViewMatrix();
+
+		if (!m_pGameObjectCollection->Render(this, mView, mProjection))
+		{
+			return false;
+		}
+
 		m_pDirect3D->EndScene();
 		return true;
 	}
@@ -113,5 +121,15 @@ namespace WBEngine
 	GameObject* Graphics::CreateGameObject(std::wstring sObjectName, std::wstring sModelName)
 	{
 		return m_pGameObjectCollection->CreateObject(sObjectName, sModelName);
+	}
+
+	Direct3D* Graphics::GetDirect3D()
+	{
+		return m_pDirect3D;
+	}
+
+	ColorShader* Graphics::GetColorShader()
+	{
+		return m_pColorShader;
 	}
 }

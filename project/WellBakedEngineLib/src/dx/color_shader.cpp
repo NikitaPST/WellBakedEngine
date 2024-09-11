@@ -169,6 +169,40 @@ namespace WBEngine
 		Logger::Info(L"Color shader disposal finished");
 	}
 
+	bool ColorShader::Render(ID3D11DeviceContext* pDeviceContext, UINT nIndexCount, DirectX::XMMATRIX mWorld,
+		DirectX::XMMATRIX mView, DirectX::XMMATRIX mProjection)
+	{
+		mWorld = DirectX::XMMatrixTranspose(mWorld);
+		mView = DirectX::XMMatrixTranspose(mView);
+		mProjection = DirectX::XMMatrixTranspose(mProjection);
+
+		D3D11_MAPPED_SUBRESOURCE mappedResource;
+		sizeof(&mappedResource, sizeof(D3D11_MAPPED_SUBRESOURCE));
+
+		HRESULT hr = pDeviceContext->Map(m_pMatrixBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);
+		if (FAILED(hr))
+		{
+			Logger::Error(L"Cannot set matrix buffer for color shader");
+			return false;
+		}
+
+		MatrixBuffer* pData = (MatrixBuffer*)mappedResource.pData;
+		pData->mWorld = mWorld;
+		pData->mView = mView;
+		pData->mProjection = mProjection;
+
+		pDeviceContext->Unmap(m_pMatrixBuffer, 0);
+		pDeviceContext->VSSetConstantBuffers(0, 1, &m_pMatrixBuffer);
+
+		pDeviceContext->IASetInputLayout(m_pLayout);
+		pDeviceContext->VSSetShader(m_pVertexShader, NULL, 0);
+		pDeviceContext->PSSetShader(m_pPixelShader, NULL, 0);
+
+		pDeviceContext->DrawIndexed(nIndexCount, 0, 0);
+
+		return true;
+	}
+
 	void ColorShader::OutputShaderErrorMessage(ID3D10Blob* pErrorMessage)
 	{
 		int nErrorMessageSize = static_cast<int>(pErrorMessage->GetBufferSize());

@@ -7,11 +7,15 @@
 
 namespace WBEngine
 {
+	class Graphics;
+
 	class GameObject
 	{
 	public:
 		GameObject(Model* pModel);
 		~GameObject();
+
+		bool Render(Graphics* pGraphics, DirectX::XMMATRIX mView, DirectX::XMMATRIX mProjection);
 
 	private:
 		Model* m_pModel;

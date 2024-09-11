@@ -9,6 +9,8 @@
 
 namespace WBEngine
 {
+	class Graphics;
+
 	class GameObjectCollection
 	{
 	public:
@@ -17,6 +19,7 @@ namespace WBEngine
 
 		void Dispose();
 		GameObject* CreateObject(std::wstring sObjectName, std::wstring sModelName);
+		bool Render(Graphics* pGraphics, DirectX::XMMATRIX mView, DirectX::XMMATRIX mProjection);
 
 	private:
 		std::map<std::wstring, GameObject*> m_dictObjects;

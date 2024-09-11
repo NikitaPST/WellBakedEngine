@@ -68,4 +68,20 @@ namespace WBEngine
 
 		return pObject;
 	}
+
+	bool GameObjectCollection::Render(Graphics* pGraphics, DirectX::XMMATRIX mView, DirectX::XMMATRIX mProjection)
+	{
+		for (auto it = m_dictObjects.begin(); it != m_dictObjects.end(); it++)
+		{
+			if (!it->second || !it->second->Render(pGraphics, mView, mProjection))
+			{
+				std::wstringstream sMessage;
+				sMessage << L"Error rendering object " << it->first;
+				Logger::Error(sMessage.str());
+				return false;
+			}
+		}
+
+		return true;
+	}
 }
